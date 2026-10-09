@@ -52,14 +52,13 @@ Through rigorous Exploratory Data Analysis (EDA), domain-specific feature engine
 
 ### 🛠️ Feature Engineering Pipeline
 
-* **Binary Risk Flags:** Created `pub_rec_flag`, `mort_acc_flag`, and `pub_rec_bankruptcies_flag` for values $>1.0$ to isolate high-risk repeat derogatories.
-* **Temporal Features:** Derived `issue_year` and `issue_month` from `issue_d` to track macro credit cycles and seasonality.
-* **Credit History Age:** Computed `credit_history_year` ($\text{issue\_d} - \text{earliest\_cr\_line}$) to quantify credit maturity at application time.
-* **Geographic Parsing:** Extracted 5-digit zip codes from `address` text and mapped them to regional economic indicators.
+* **Binary Risk Flags:** Created `pub_rec_flag`, `mort_acc_flag`, and `pub_rec_bankruptcies_flag` for values > 1.0 to isolate high-risk repeat derogatories[cite: 1].
+* **Temporal Features:** Derived `issue_year` and `issue_month` from `issue_d` to track macro credit cycles and seasonality[cite: 1].
+* **Credit History Age:** Computed `credit_history_year` (`issue_d` - `earliest_cr_line`) to quantify credit maturity at application time[cite: 1].
+* **Geographic Parsing:** Extracted 5-digit zip codes from `address` text and mapped them to regional economic indicators[cite: 1].
 * **Financial Ratio Features:**
-  $$\text{Debt Service Burden} = \frac{\text{installment} \times 12}{\text{annual\_inc}}$$
-  $$\text{Account Activity Ratio} = \frac{\text{open\_acc}}{\text{total\_acc}}$$
-
+  * Debt Service Burden = (`installment` * 12) / `annual_inc`[cite: 1]
+  * Account Activity Ratio = `open_acc` / `total_acc`
 ---
 
 ## ⚙️ Model Architecture & Threshold Optimization
