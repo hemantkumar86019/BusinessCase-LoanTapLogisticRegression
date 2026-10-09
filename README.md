@@ -50,12 +50,12 @@ Through rigorous Exploratory Data Analysis (EDA), domain-specific feature engine
 
 ---
 
-## 🛠️ Feature Engineering Pipeline
+### 🛠️ Feature Engineering Pipeline
 
 * **Binary Risk Flags:** Created `pub_rec_flag`, `mort_acc_flag`, and `pub_rec_bankruptcies_flag` for values $>1.0$ to isolate high-risk repeat derogatories.
 * **Temporal Features:** Derived `issue_year` and `issue_month` from `issue_d` to track macro credit cycles and seasonality.
-* **Credit History Age:** Computed `credit_history_year` ($\text{issue\_d} - \text{earliest\_cr\_line}$) to quantify credit maturity at application.
-* **Geographic Parsing:** Extracted 5-digit zip codes from `address` and mapped them to regional economic indicators.
+* **Credit History Age:** Computed `credit_history_year` ($\text{issue\_d} - \text{earliest\_cr\_line}$) to quantify credit maturity at application time.
+* **Geographic Parsing:** Extracted 5-digit zip codes from `address` text and mapped them to regional economic indicators.
 * **Financial Ratio Features:**
   $$\text{Debt Service Burden} = \frac{\text{installment} \times 12}{\text{annual\_inc}}$$
   $$\text{Account Activity Ratio} = \frac{\text{open\_acc}}{\text{total\_acc}}$$
